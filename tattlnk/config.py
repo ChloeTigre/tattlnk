@@ -1,3 +1,4 @@
 Config = {
-    'DBDriver': 'sqlite3'
+    'BaseURL': 'https://t4t.link',
+    'DBDriver': 'leveldb',
 }

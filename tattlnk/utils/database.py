@@ -49,7 +49,8 @@ class SQLiteAdapter(DBAdapter):
             logger.error("Problem with database: %s", e.args[0])
             raise
             
-        for l in cur.fetchone():
+        while True:
+            l = cur.fetchone()
             if l is None:
                 break
             yield l
@@ -59,7 +60,7 @@ class SQLiteAdapter(DBAdapter):
         if not args:
             args = ()
         try:
-            cur.execute(query)
+            cur.execute(query, args)
         except sqlite3.Error as e:
             logger.error("Problem with database: %s", e.args[0])
             raise
